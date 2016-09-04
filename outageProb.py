@@ -196,14 +196,18 @@ def outage_prob_sys_iid(lam_ij, lam_id, p_i, rSet):
     p_i: a float denoting the power level used by i.
     rSet: a list containing the indices of i's relays.
     """
-    if len(rSet) == 0:
-        raise
-        
+#    if len(rSet) == 0:
+#        raise
+    
     N_i = len(rSet)
     c = 2**(const.R*(1+N_i)) - 1.0
     
+    if N_i == 0:
+        outageProb = 1.0 - np.exp(-c*(lam_id/p_i))
+        return outageProb
+    
     possible_numbers = range(N_i)
-    possible_numbers.append(N_i)
+    possible_numbers.append(N_i) # if N_i = 0 then possible_numbers = [0]
     Comb = lambda n: (np.math.factorial(N_i)/(np.math.factorial(N_i-n)*np.math.factorial(n)))
     f = lambda n: (((c*(lam_id/p_i))**(n))*np.exp(-c*(lam_id/p_i)))/np.math.factorial(n)
     g = lambda n: Comb(n)*((np.exp(-c*lam_ij/p_i))**(n))*((1-np.exp(-c*lam_ij/p_i))**(N_i-n))    

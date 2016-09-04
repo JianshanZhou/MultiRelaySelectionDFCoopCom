@@ -25,6 +25,8 @@ This module defines some basic constants that may be used in the
  DF Cooperative Communication simulation experiments.
 """
 
+import numpy as np
+
 class Constants(object):
                  
     def __init__(self):
@@ -34,8 +36,9 @@ class Constants(object):
               "BETA": 0.01,#the outage probability threshold
               "R": 1.0,#the transmission date rate in (bps/Hz)
               "DELTA": 0.1,#the learning rate
-              "a1": 1.0,
-              "a2": 1.0}
+              "a1": 1.,
+              "a2": 5.,
+              "LAMBDA_interval": np.array([0.0,2.0])}
         self.__dict__.update(kw)
     
     def __setattr__(self, k, v):

@@ -49,7 +49,7 @@ linecolor = ['#98df8a', '#d62728', '#ff9896', '#9467bd', '#c5b0d5',
              '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5']
 #%% The following experiments are conducted under the i.i.d assumption.
 # It is noted that the exponential distribution parameter lambda between any
-#  two nodes i and j is in proportion to (distance(i,j))^(-alpha) where alpha
+#  two nodes i and j is in proportion to (distance(i,j))^(alpha) where alpha
 #  alpha characterizes the path loss effect. 
 
 relay_num = np.array([1, 3, 5, 7, 9],dtype = int)
